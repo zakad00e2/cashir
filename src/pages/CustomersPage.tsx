@@ -173,10 +173,9 @@ export function CustomersPage({ customers, invoices, onAddCustomer, onOpenInvoic
             <label>
               رصيد سابق
               <input
-                type="number"
-                min="0"
+                inputMode="decimal"
                 value={balance}
-                onChange={(event) => setBalance(Number(event.target.value))}
+                onChange={(event) => setBalance(Number(event.target.value) || 0)}
               />
             </label>
             <div className="modal-actions">

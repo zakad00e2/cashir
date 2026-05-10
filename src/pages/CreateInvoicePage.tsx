@@ -62,7 +62,7 @@ export function CreateInvoicePage({ customers, invoices, onSaveInvoice }: Create
         item.id === id
           ? {
               ...item,
-              [field]: field === "name" ? String(value) : Number(value),
+              [field]: field === "name" ? String(value) : Number(value) || 0,
             }
           : item,
       ),
@@ -173,16 +173,14 @@ export function CreateInvoicePage({ customers, invoices, onSaveInvoice }: Create
                     </td>
                     <td>
                       <input
-                        type="number"
-                        min="0"
+                        inputMode="decimal"
                         value={item.quantity}
                         onChange={(event) => updateItem(item.id, "quantity", event.target.value)}
                       />
                     </td>
                     <td>
                       <input
-                        type="number"
-                        min="0"
+                        inputMode="decimal"
                         value={item.price}
                         onChange={(event) => updateItem(item.id, "price", event.target.value)}
                       />
@@ -202,11 +200,11 @@ export function CreateInvoicePage({ customers, invoices, onSaveInvoice }: Create
           <div className="form-grid form-grid--two">
             <label>
               الخصم
-              <input type="number" min="0" value={discount} onChange={(event) => setDiscount(Number(event.target.value))} />
+              <input inputMode="decimal" value={discount} onChange={(event) => setDiscount(Number(event.target.value) || 0)} />
             </label>
             <label>
               المبلغ المدفوع
-              <input type="number" min="0" value={paidAmount} onChange={(event) => setPaidAmount(Number(event.target.value))} />
+              <input inputMode="decimal" value={paidAmount} onChange={(event) => setPaidAmount(Number(event.target.value) || 0)} />
             </label>
           </div>
 
